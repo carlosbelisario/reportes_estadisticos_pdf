@@ -1,5 +1,6 @@
 <?php 
-namespace reportes_graficos_pdf;    
+phpinfo();
+/*namespace reportes_graficos_pdf;    
 function __autoload_class($class)
 {
     require_once $class;
