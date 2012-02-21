@@ -16,7 +16,7 @@ class Pdf extends FPDF
     
     public function graphPdf(array $data, array $locationImage, array $graphSize)
     {
-        $graph = new WrapperGraph('jpgraph_pie', $graphSize);
+        $graph = new MyWrapperGraph('jpgraph_pie', $graphSize);
         $graphName = $graph->createPieGrap($data, false, 'grafico_imagen');
         $this->Image("$graphName", $locationImage[0], $locationImage[1], $locationImage[2], $locationImage[3]);
     }
