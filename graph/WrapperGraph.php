@@ -56,6 +56,13 @@ class WrapperGraph
         }
     }        
     
+    /**
+     *
+     * @param array $datas array whit the data for the graph
+     * @param type $show show the graph in the web browser or save this in a file
+     * @param type $nameGraph name of the file of save
+     * @return type string $nameGraph
+     */
     public function createPieGrap(array $datas, $show = true, $nameGraph = 'PieGraph')
     {   
         require_once 'jpgraph/src/jpgraph_pie3d.php';
@@ -83,5 +90,40 @@ class WrapperGraph
         }        
     }
     
-}        
+    public function createBarGraph(array $datas, array $yaxisScale)
+    {        
+        foreach($datas as $key => $value) {
+            $data[] = $value;
+            if(!is_null($key)) {
+                $xasisName[] = $key;
+            }
+        }
+        
+        $this->jpgrap->SetScale('textlin');
+        $this->jpgrap->yaxis->SetTickPositions($yaxisScale);
+        $this->jpgrap->SetBox(false);        
+        $this->jpgrap->ygrid->setFill(false);
+        $this->jpgrap->xaxis->setTickLabels($xasisName);
+        
+        
+        //$this->jpgrap->xaxis->scale->ticks->SetSize(20,3);
+        $this->jpgrap->yaxis->HideLine(false);
+        $this->jpgrap->yaxis->HideTicks(false, false);
+        
+        $barPlot = new BarPlot($data);
+        $this->jpgrap->Add($barPlot);
+        
+        $barPlot->SetColor("white");
+        $barPlot->SetFillGradient("#1188ff","white",GRAD_LEFT_REFLECTION);
+        $barPlot->SetWidth(45);
+        $this->jpgrap->title->Set("Bar Gradient(Left reflection)");
+
+        // Display the graph
+        $this->jpgrap->Stroke();
+    }
+    
+}       
+$graph = new WrapperGraph('jpgraph_bar', array('width' => 350, 'height' => 250));
+$data = array('diciembre enero'=>62,'b'=>105,'c' => 85,'d' =>50);
+$graph->createBarGraph($data, array(0,30,60,90,120,150));
 ?>
