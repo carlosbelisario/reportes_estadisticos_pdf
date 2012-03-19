@@ -118,6 +118,7 @@ class MyWrapperGraph
         return $this->size;       
     }
     
+
     /**
      *
      * @param array $size 
@@ -159,8 +160,7 @@ class MyWrapperGraph
         foreach($datas['values'] as $val) {            
             $colors[] = $val[1];
             $data[] = $val[0];
-        }
-        //print_r($data);
+        }        
         $pie3dPlot = new PiePlot3D($data);        
         $pie3dPlot->SetSliceColors($colors);        
         $pie3dPlot->SetLegends($datas['labels']);        

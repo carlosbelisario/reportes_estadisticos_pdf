@@ -1,7 +1,7 @@
 <?php
 require_once 'MyWrapperGraph.php';
 $graph = new MyWrapperGraph();
-$graph->setSize(array('width' => 350, 'height' => 250));
+$graph->setSize(array('width' => 700, 'height' => 600));
 $graph->setJpgraph();
 //test line
 //array whit the value of the line
@@ -11,9 +11,9 @@ $graph->setData($data);
 //
 //test pie
 //array assoc whit the label=>array(value, color pie)
-$data1 = array('aprobados'=>array(1,'red'),'reprobados'=>array(1,'blue'));
+$data1 = array('menor a 10 años'=>array(10,'green'),'desde 11 hasta 15 años'=>array(33,'red'), 'de 16 a 20 años'=>array(43,'green'), 'despues de 20 años'=>array(14,'green'));
 $graph->setData($data1);
-//$graph->createPieGrap();
+$graph->createPieGrap(true,'','edadesanorexia');
 //
 //test bar
 //array assoc whit the label => value to show in the graph

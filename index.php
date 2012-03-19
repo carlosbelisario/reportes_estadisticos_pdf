@@ -4,7 +4,7 @@ function __autoload_class($class)
     require_once $class;
 }
 $classToLoad = array(                
-        'graph/' => 'WrapperGraph.php',
+        'graph/' => 'MyWrapperGraph.php',
         '' => 'Pdf.php'
     );
 foreach($classToLoad as $paht => $class) {
