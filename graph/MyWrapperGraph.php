@@ -170,7 +170,8 @@ class MyWrapperGraph
         if($show) {
             $graph->Stroke();         
         } else {
-            $graph->Stroke("$nameGraph.png");         
+            $graph->Stroke("../$nameGraph.png");         
+            chmod($nameGraph . ".png", 0777);
             return $nameGraph . ".png";
         }        
         
